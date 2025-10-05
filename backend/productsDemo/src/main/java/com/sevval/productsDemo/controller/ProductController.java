@@ -57,8 +57,9 @@ public class ProductController {
             if (maxPrice != null) ok = ok && resp.getPriceUsd() <= maxPrice;
             if (minPopularity != null) {
                 // minPopularity 0.0–1.0 arası, önce 5 üzerinden değere çeviriyoruz
-                double minPopOutOf5 = minPopularity * 5.0;
-                ok = ok && resp.getPopularityOutOf5() >= Math.round(minPopOutOf5 * 10.0) / 10.0;
+                //double minPopOutOf5 = minPopularity * 5.0;
+                //ok = ok && resp.getPopularityOutOf5() >= Math.round(minPopOutOf5 * 10.0) / 10.0;
+                ok = ok && resp.getPopularityOutOf5() >= minPopularity;
             }
             return ok;
         }).collect(Collectors.toList());
